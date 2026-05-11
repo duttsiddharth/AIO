@@ -18,6 +18,7 @@ import ROICalculator from "@/pages/ROICalculator";
 import Governance from "@/pages/Governance";
 import ReportExport from "@/pages/ReportExport";
 import Personas from "@/pages/Personas";
+import DeliveryKit from "@/pages/DeliveryKit";
 import { Toaster } from "@/components/ui/sonner";
 
 function ThemeBoot({ children }) {
@@ -53,6 +54,7 @@ function App() {
               <Route path="/governance" element={<Governance />} />
               <Route path="/reports" element={<ReportExport />} />
               <Route path="/personas" element={<Personas />} />
+              <Route path="/delivery-kit" element={<DeliveryKit />} />
               <Route path="*" element={<Navigate to="/command-center" replace />} />
             </Route>
           </Routes>

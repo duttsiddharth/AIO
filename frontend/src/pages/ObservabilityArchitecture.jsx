@@ -3,6 +3,7 @@ import PageHeader from "@/components/PageHeader";
 import SectionCard from "@/components/SectionCard";
 import StatusBadge from "@/components/StatusBadge";
 import ExportButton from "@/components/ExportButton";
+import TopologyDiagram from "@/components/TopologyDiagram";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
@@ -160,6 +161,16 @@ export default function ObservabilityArchitecture() {
           </div>
         </SectionCard>
       </div>
+
+      <SectionCard
+        title="Reference Topology"
+        description="Interactive blueprint · Collect → Process → Store → Analyze"
+        action={<StatusBadge tone="info">interactive</StatusBadge>}
+        testId="card-topology"
+        className="mb-6"
+      >
+        <TopologyDiagram />
+      </SectionCard>
 
       <SectionCard title="Full Vendor Comparison" description="Coverage scores across telemetry pillars" testId="card-vendor-compare">
         <div className="overflow-x-auto scrollbar-thin">

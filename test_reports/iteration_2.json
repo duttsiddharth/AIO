@@ -1,0 +1,54 @@
+{
+  "summary": "Frontend-only testing of two new features (Interactive Topology Diagram in /observability, Delivery Kit at /delivery-kit) and regression of existing 15 modules. 13/14 sub-features pass. One data mismatch: kpi-surveys shows 10 (data has 10 surveys total) but the requirement explicitly expects 15. All other features (topology nodes, filters, detail panel, phase deep-dive, milestones toggle, downloads, PDFs, nav, theme, persona, regression routes) work without errors.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "DeliveryKit · KPI surveys",
+        "issue": "kpi-surveys displays value 10 (actual data: 2+3+2+3 surveys across the 4 phases). Requirement explicitly states this KPI should read 15. Data file /app/frontend/src/data/deliveryKit.js is missing 5 surveys across phases. Either add 5 more survey artifacts (recommended distribution: Phase-0 +1, Phase-2 +2, Phase-3 +2) — and update generateSurveyContent() sets accordingly — or the requirement count must be corrected to 10.",
+        "selector": "[data-testid=\"kpi-surveys\"]",
+        "priority": "HIGH"
+      }
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": ["/app/test_reports/iteration_2.json"],
+  "action_items": [
+    "Add 5 more surveys to /app/frontend/src/data/deliveryKit.js so kpi-surveys reaches 15, and extend generateSurveyContent() with question sets for the new survey IDs. Suggested additions: phase-0 sv-cultural-readiness; phase-2 sv-otel-readiness, sv-toolchain-rationalization; phase-3 sv-automation-trust, sv-bau-readiness."
+  ],
+  "critical_code_review_comments": [
+    "DeliveryKit.jsx is 512 lines and still readable; ArtifactList is co-located which is fine. Future split could extract generatePhasePdf into a util module.",
+    "TopologyDiagram detail panel: when clicking a connected-to button, the new node becomes selected but the close ✕ remains; behaviour is acceptable and tested.",
+    "Window parsing in DeliveryKit timeline ruler uses `phase.window.split('–').pop()` (en-dash). Works today but fragile if a phase label is edited; consider storing endDay numerically on each phase.",
+    "Downloads use Blob+createObjectURL which is correct; URL.revokeObjectURL is called in setTimeout(0) — fine for current usage. For download-full-kit (28 sequential downloads) browsers may suppress later prompts; consider zipping in future."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "n/a", "frontend": "93%"},
+  "test_credentials": "n/a (no auth in app)",
+  "seed_data_creation": "None — all data is static client-side mocks",
+  "retest_needed": true,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "After main agent adds 5 surveys to bring kpi-surveys to 15, re-verify: (1) kpi-surveys text contains '15'; (2) any new survey IDs render under card-artifacts-{phase} with data-testid=`survey-{id}` and download-survey-{id} triggers a download; (3) generateSurveyContent returns content for the new IDs (no fallback 'Custom question' placeholder). All other features confirmed working in this iteration — no need to retest topology, regression routes, theme, persona, milestones, PDFs.",
+  "rca of the issue": "Root cause: data file /app/frontend/src/data/deliveryKit.js declares only 10 surveys total across the 4 DELIVERY_PHASES arrays (Phase-0:2, Phase-1:3, Phase-2:2, Phase-3:3). The KPICard computes the value dynamically via totals.surveys = sum(phase.surveys.length), so the displayed 10 is correct relative to data. The discrepancy is between the data and the spec — the spec asks for 15. Reproduction: open /#/delivery-kit, inspect [data-testid='kpi-surveys'] — value renders 10. Mitigation: add 5 more survey objects (id, name, filename) to the appropriate phases and add matching entries in generateSurveyContent's `sets` object so download content is meaningful instead of the generic fallback.",
+  "verified_features": [
+    "card-topology section renders inside /observability",
+    "topology-diagram present with all 14 nodes (k8s,vms,apps,net,otel,pipeline,topology,tsdb,logs,traces,events,aiops,itsi,console)",
+    "5 filter chips work: all=23 edges, metrics=6 edges (reduction confirmed); other filters present",
+    "Click topology-node-otel opens topology-detail showing OTel Collector + all 4 telemetry kinds (metrics/logs/traces/events)",
+    "topology-detail-close dismisses the panel",
+    "nav-delivery-kit sidebar item exists with NEW badge; clicking navigates to /#/delivery-kit",
+    "page-delivery-kit renders",
+    "KPI values: phases=4 OK, templates=15 OK, guides=13 OK, surveys=10 MISMATCH (expected 15)",
+    "4 phase cards exist (phase-card-phase-0..3); clicking switches phase-summary-{id}",
+    "card-outcomes-{id}, card-milestones-{id}, card-artifacts-{id} render with outcome-{id}-{idx} items",
+    "milestone-phase-0-0 toggles check (line-through class applied/removed)",
+    "Individual artifact downloads triggered: download-template-tmpl-charter -> 01-program-charter.md; download-guide-guide-kickoff -> guide-kickoff.md; download-survey-sv-operating-model -> survey-operating-model.md",
+    "phase-pdf-phase-0 triggered file phase-0-phase-briefing.pdf",
+    "phase-download-all-phase-0 triggered multiple downloads and showed success toast '3 templates · 2 guides · 2 surveys'",
+    "download-full-kit triggers all-phase downloads with success toast",
+    "Regression: /command-center, /maturity, /incidents, /roi, /reports all render with zero console errors",
+    "Theme toggle changes documentElement class (dark <-> light)",
+    "Persona switcher menu opens (8 options) and selection works"
+  ]
+}
