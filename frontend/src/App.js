@@ -1,53 +1,65 @@
-import { useEffect } from "react";
 import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useStore } from "@/store/useStore";
+import DashboardLayout from "@/layouts/DashboardLayout";
+import ExecutiveCommandCenter from "@/pages/ExecutiveCommandCenter";
+import MaturityAssessment from "@/pages/MaturityAssessment";
+import ObservabilityArchitecture from "@/pages/ObservabilityArchitecture";
+import IncidentMTTR from "@/pages/IncidentMTTR";
+import AutomationDiscovery from "@/pages/AutomationDiscovery";
+import PredictiveIntelligence from "@/pages/PredictiveIntelligence";
+import ITILTransformation from "@/pages/ITILTransformation";
+import CloudOperations from "@/pages/CloudOperations";
+import NOCTelecom from "@/pages/NOCTelecom";
+import SREReliability from "@/pages/SREReliability";
+import BuildBuyPartner from "@/pages/BuildBuyPartner";
+import ROICalculator from "@/pages/ROICalculator";
+import Governance from "@/pages/Governance";
+import ReportExport from "@/pages/ReportExport";
+import Personas from "@/pages/Personas";
+import { Toaster } from "@/components/ui/sonner";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
-
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
-
+function ThemeBoot({ children }) {
+  const theme = useStore((s) => s.theme);
   useEffect(() => {
-    helloWorldApi();
-  }, []);
-
-  return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
-  );
-};
+    const root = document.documentElement;
+    if (theme === "dark") root.classList.add("dark");
+    else root.classList.remove("dark");
+  }, [theme]);
+  return children;
+}
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <ThemeBoot>
+      <div className="app-shell font-sans antialiased">
+        <HashRouter>
+          <Routes>
+            <Route element={<DashboardLayout />}>
+              <Route path="/" element={<Navigate to="/command-center" replace />} />
+              <Route path="/command-center" element={<ExecutiveCommandCenter />} />
+              <Route path="/maturity" element={<MaturityAssessment />} />
+              <Route path="/observability" element={<ObservabilityArchitecture />} />
+              <Route path="/incidents" element={<IncidentMTTR />} />
+              <Route path="/automation" element={<AutomationDiscovery />} />
+              <Route path="/predictive" element={<PredictiveIntelligence />} />
+              <Route path="/itil" element={<ITILTransformation />} />
+              <Route path="/cloud" element={<CloudOperations />} />
+              <Route path="/noc" element={<NOCTelecom />} />
+              <Route path="/sre" element={<SREReliability />} />
+              <Route path="/build-buy-partner" element={<BuildBuyPartner />} />
+              <Route path="/roi" element={<ROICalculator />} />
+              <Route path="/governance" element={<Governance />} />
+              <Route path="/reports" element={<ReportExport />} />
+              <Route path="/personas" element={<Personas />} />
+              <Route path="*" element={<Navigate to="/command-center" replace />} />
+            </Route>
+          </Routes>
+        </HashRouter>
+        <Toaster position="bottom-right" richColors />
+      </div>
+    </ThemeBoot>
   );
 }
 

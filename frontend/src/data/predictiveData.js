@@ -1,0 +1,66 @@
+// Predictive Incident Intelligence
+
+export const PREDICTIVE_SIGNALS = [
+  {
+    id: "p1",
+    severity: "critical",
+    title: "Payments Gateway SLA breach probability",
+    service: "payments-api",
+    probability: 0.84,
+    eta: "in 38 minutes",
+    rootCause: "Connection pool saturation in primary DB",
+    affected: ["checkout", "subscription-renew", "wallet"],
+    recommendation: "Scale connection pool · enable circuit breaker · alert payments oncall",
+  },
+  {
+    id: "p2",
+    severity: "high",
+    title: "Order Capture latency degradation forecast",
+    service: "order-capture",
+    probability: 0.71,
+    eta: "in 2.4 hours",
+    rootCause: "Memory leak in OrderValidator service (deploy v2.18.3)",
+    affected: ["order-capture", "fulfillment", "inventory-sync"],
+    recommendation: "Roll back to v2.18.2 · open incident · notify SRE channel",
+  },
+  {
+    id: "p3",
+    severity: "high",
+    title: "Mumbai region storage capacity exhaustion",
+    service: "object-store-mum-1",
+    probability: 0.78,
+    eta: "in 5 days",
+    rootCause: "Log retention policy + media surge",
+    affected: ["media-cdn", "backup-jobs"],
+    recommendation: "Expand storage class · adjust retention · prune cold tier",
+  },
+  {
+    id: "p4",
+    severity: "medium",
+    title: "Recurring DNS resolution anomaly",
+    service: "edge-dns",
+    probability: 0.62,
+    eta: "rolling",
+    rootCause: "ISP peering instability in EU-W region",
+    affected: ["customer-portal", "mobile-app"],
+    recommendation: "Failover to secondary resolver · open peering ticket",
+  },
+  {
+    id: "p5",
+    severity: "medium",
+    title: "Billing engine queue backpressure trend",
+    service: "billing-worker",
+    probability: 0.58,
+    eta: "in 6 hours",
+    rootCause: "Slow downstream tax-svc response time",
+    affected: ["billing", "invoicing"],
+    recommendation: "Scale workers · alert downstream owner",
+  },
+];
+
+export const ANOMALY_FORECAST = Array.from({ length: 24 }).map((_, i) => ({
+  hour: `${String(i).padStart(2, "0")}:00`,
+  baseline: 30 + Math.sin(i / 3) * 8 + (i % 5),
+  observed: 30 + Math.sin(i / 3) * 8 + (i % 5) + (i > 17 ? (i - 17) * 4 : 0),
+  forecast: 30 + Math.sin(i / 3) * 8 + (i % 5) + (i > 13 ? (i - 13) * 3.2 : 0),
+}));
