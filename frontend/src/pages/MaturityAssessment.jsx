@@ -146,9 +146,10 @@ export default function MaturityAssessment() {
                     <Label
                       key={idx}
                       htmlFor={`${q.id}-${idx}`}
+                      data-testid={`question-${q.id}-option-${idx}`}
                       className="flex items-center gap-2 cursor-pointer rounded-md border border-border bg-background/40 px-3 py-2 text-sm hover:border-primary/50"
                     >
-                      <RadioGroupItem value={String(idx)} id={`${q.id}-${idx}`} />
+                      <RadioGroupItem value={String(idx)} id={`${q.id}-${idx}`} data-testid={`radio-${q.id}-${idx}`} />
                       <span>{opt.label}</span>
                       <span className="ml-auto font-mono text-xs text-muted-foreground">{opt.score}</span>
                     </Label>
