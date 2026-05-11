@@ -41,6 +41,7 @@ export const DELIVERY_PHASES = [
     surveys: [
       { id: "sv-operating-model", name: "Operating Model Baseline Survey", filename: "survey-operating-model.md" },
       { id: "sv-leadership-vision", name: "Leadership Vision Survey", filename: "survey-leadership-vision.md" },
+      { id: "sv-cultural-readiness", name: "Cultural Readiness Survey", filename: "survey-cultural-readiness.md" },
     ],
     milestones: [
       "M0 · Charter signed",
@@ -140,6 +141,8 @@ export const DELIVERY_PHASES = [
     surveys: [
       { id: "sv-slo-readiness", name: "Service SLO Readiness Survey", filename: "survey-slo-readiness.md" },
       { id: "sv-change-readiness", name: "Change & Risk Readiness Survey", filename: "survey-change-readiness.md" },
+      { id: "sv-otel-readiness", name: "OpenTelemetry Adoption Readiness Survey", filename: "survey-otel-readiness.md" },
+      { id: "sv-toolchain-rationalization", name: "Toolchain Rationalization Survey", filename: "survey-toolchain-rationalization.md" },
     ],
     milestones: [
       "M6 · OTel pipeline live",
@@ -193,6 +196,8 @@ export const DELIVERY_PHASES = [
       { id: "sv-engineer-sentiment", name: "Engineer Sentiment Survey (toil reduction)", filename: "survey-engineer-sentiment.md" },
       { id: "sv-customer-impact", name: "Customer Impact Survey", filename: "survey-customer-impact.md" },
       { id: "sv-csat", name: "Internal CSAT Survey", filename: "survey-csat.md" },
+      { id: "sv-automation-trust", name: "Automation Trust & Adoption Survey", filename: "survey-automation-trust.md" },
+      { id: "sv-bau-readiness", name: "BAU Operations Handoff Readiness Survey", filename: "survey-bau-readiness.md" },
     ],
     milestones: [
       "M10 · 10 production automations live",
@@ -406,6 +411,46 @@ export const generateSurveyContent = (phase, survey) => {
       ["3. Communication during incidents", "1-5"],
       ["4. Proactive notifications", "1-5"],
       ["5. Net Promoter Score (likely to recommend)", "0-10"],
+    ],
+    "sv-cultural-readiness": [
+      ["1. How would you rate the org's appetite for AI-assisted operations?", "1 (resistant) — 5 (eager)"],
+      ["2. How comfortable are engineers with automation making production changes?", "1-5"],
+      ["3. Are blameless retrospectives the norm?", "Yes / Partial / No"],
+      ["4. How well does leadership tolerate short-term setbacks for long-term gain?", "1-5"],
+      ["5. What is the biggest cultural blocker to autonomy?", "Free text"],
+      ["6. Are cross-team rituals (guilds, communities of practice) in place?", "Yes / Some / No"],
+    ],
+    "sv-otel-readiness": [
+      ["1. Languages/runtimes in production (list)", "Free text"],
+      ["2. % of services already emitting OTLP-compatible telemetry", "0-100%"],
+      ["3. Existence of a central observability pipeline today", "Yes / No / Planned"],
+      ["4. Sampling strategy maturity", "Random / Tail / Adaptive / None"],
+      ["5. Top concern about OTel adoption", "Performance / Cost / Tooling / Skills / Other"],
+      ["6. Are you using OpenTelemetry collectors today?", "Yes / Pilot / No"],
+    ],
+    "sv-toolchain-rationalization": [
+      ["1. Count of distinct monitoring/observability tools in use", "Numeric"],
+      ["2. Estimated overlap between tools (your view)", "1 (none) — 5 (heavy)"],
+      ["3. Are tool contracts visible centrally?", "Yes / Partial / No"],
+      ["4. % of cost spent on legacy tools you would deprecate", "0-100%"],
+      ["5. Which tools are sacred (cannot be deprecated)?", "Free text"],
+      ["6. Preferred consolidation horizon", "6 months / 12 months / 18+ months"],
+    ],
+    "sv-automation-trust": [
+      ["1. How much do you trust the current automation library?", "1 (no trust) — 5 (full trust)"],
+      ["2. Have you been negatively impacted by an automation in the last 90 days?", "Yes / No"],
+      ["3. Do you understand when an automation will act on your service?", "Yes / Partial / No"],
+      ["4. Are automation outcomes communicated transparently?", "1-5"],
+      ["5. What would increase your trust in operational AI?", "Free text"],
+      ["6. Preferred mode for new automations to start", "Shadow / Advisory / Active"],
+    ],
+    "sv-bau-readiness": [
+      ["1. Are operating runbooks current and accurate for your service?", "Yes / Partial / No"],
+      ["2. Is on-call rotation staffed and capable to BAU level?", "Yes / Partial / No"],
+      ["3. Are SLOs + error budgets formally tracked?", "Yes / Partial / No"],
+      ["4. Have automation owners + escalation paths been documented?", "Yes / Partial / No"],
+      ["5. Are quarterly value-realization reviews scheduled?", "Yes / Planned / No"],
+      ["6. What remains blocking full BAU handoff?", "Free text"],
     ],
   };
   const items = sets[survey.id] || [

@@ -57,6 +57,18 @@ GitHub Pages (HashRouter compatible). README includes both gh-pages CLI and GitH
 - Responsive layout (mobile sheet menu)
 - LocalStorage persistence
 
+## What's Implemented (2026-02-12 — iteration 2)
+- **Interactive SVG topology diagram** in Observability Architecture (`/observability`):
+  14 nodes across Collect → Process → Store → Analyze lanes, animated telemetry pulses on edges,
+  filter chips (all/metrics/logs/traces/events), hover/click highlighting, side detail panel with
+  connected-to navigation. Component: `src/components/TopologyDiagram.jsx`, data: `src/data/topology.js`.
+- **Delivery Kit module** at `/delivery-kit` — 4 phases over 180 days (Mobilize · Discover & Diagnose ·
+  Foundation · Scale & Embed). Each phase produces 4–5 deliverables, 3–4 templates (markdown + CSV),
+  2–4 guides (playbooks/runbooks/facilitator guides), 2–5 surveys, RACI matrix, milestones (interactive checkboxes).
+  Counts: 4 phases · 15 templates · 13 guides · 15 surveys.
+  Three download surfaces: per-artifact download, per-phase kit (.md+.csv batch + 4-page briefing PDF),
+  full 180-day kit. Page: `src/pages/DeliveryKit.jsx`, data: `src/data/deliveryKit.js`.
+
 ## Prioritized Backlog
 ### P1 (next iteration if user requests)
 - Interactive observability architecture diagram (SVG topology with drag/zoom)
