@@ -27,7 +27,6 @@ export default function Header() {
   const toggleTheme = useStore((s) => s.toggleTheme);
   const persona = useStore((s) => s.persona);
   const setPersona = useStore((s) => s.setPersona);
-  const org = useStore((s) => s.organization);
 
   const current = getPersona(persona);
   const PersonaIcon = current.icon;
@@ -80,12 +79,14 @@ export default function Header() {
             </SheetContent>
           </Sheet>
 
-          {/* Org breadcrumb */}
+          {/* Brand credit */}
           <div className="hidden md:flex items-center gap-3">
-            <div className="leading-tight">
-              <p className="text-sm font-medium">{org.name}</p>
-              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-                {org.industry} · {org.regions} regions · {org.services} services
+            <div className="leading-tight" data-testid="brand-credit">
+              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                Crafted By
+              </p>
+              <p className="font-heading text-sm font-semibold tracking-tight">
+                Siddharth Dutt
               </p>
             </div>
           </div>

@@ -23,7 +23,7 @@ export default function DashboardLayout() {
         <footer className="px-4 sm:px-6 lg:px-8 pt-2 pb-8">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-2 border-t border-border pt-4">
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-              AIOps Transformation OS · v1.0 · Helios Global Operations
+              AIOps Transformation OS · v1.0 · Crafted by Siddharth Dutt
             </p>
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
               All data is simulated for demonstration · Static-host ready
