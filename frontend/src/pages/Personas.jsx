@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import ModuleRoadmap from "@/components/ModuleRoadmap";
 
 export default function Personas() {
   const navigate = useNavigate();
@@ -64,6 +65,8 @@ export default function Personas() {
           );
         })}
       </div>
+
+      <ModuleRoadmap moduleId="personas" />
     </div>
   );
 }

@@ -4,6 +4,7 @@ import SectionCard from "@/components/SectionCard";
 import StatusBadge from "@/components/StatusBadge";
 import KPICard from "@/components/KPICard";
 import ExportButton from "@/components/ExportButton";
+import ModuleRoadmap from "@/components/ModuleRoadmap";
 import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
 import { useStore } from "@/store/useStore";
@@ -246,6 +247,8 @@ export default function IncidentMTTR() {
           </ResponsiveContainer>
         </div>
       </SectionCard>
+
+      <ModuleRoadmap moduleId="incidents" />
     </div>
   );
 }

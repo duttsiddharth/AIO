@@ -3,6 +3,7 @@ import SectionCard from "@/components/SectionCard";
 import KPICard from "@/components/KPICard";
 import StatusBadge from "@/components/StatusBadge";
 import ExportButton from "@/components/ExportButton";
+import ModuleRoadmap from "@/components/ModuleRoadmap";
 import {
   SLO_SERVICES,
   RESILIENCE_SCORES,
@@ -134,6 +135,8 @@ export default function SREReliability() {
           ))}
         </ul>
       </SectionCard>
+
+      <ModuleRoadmap moduleId="sre" />
     </div>
   );
 }

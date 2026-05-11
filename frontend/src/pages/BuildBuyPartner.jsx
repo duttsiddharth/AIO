@@ -3,6 +3,7 @@ import SectionCard from "@/components/SectionCard";
 import StatusBadge from "@/components/StatusBadge";
 import ExportButton from "@/components/ExportButton";
 import { CAPABILITIES, decisionColor } from "@/data/buildBuyData";
+import ModuleRoadmap from "@/components/ModuleRoadmap";
 import {
   ScatterChart,
   Scatter,
@@ -169,6 +170,8 @@ export default function BuildBuyPartner() {
           </table>
         </div>
       </SectionCard>
+
+      <ModuleRoadmap moduleId="build-buy-partner" />
     </div>
   );
 }

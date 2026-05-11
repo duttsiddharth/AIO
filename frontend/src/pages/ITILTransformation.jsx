@@ -3,6 +3,7 @@ import SectionCard from "@/components/SectionCard";
 import StatusBadge from "@/components/StatusBadge";
 import ExportButton from "@/components/ExportButton";
 import { ITIL_MODULES } from "@/data/itilData";
+import ModuleRoadmap from "@/components/ModuleRoadmap";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowRight, CheckCircle2, AlertTriangle } from "lucide-react";
 
@@ -123,6 +124,8 @@ export default function ITILTransformation() {
           </TabsContent>
         ))}
       </Tabs>
+
+      <ModuleRoadmap moduleId="itil" />
     </div>
   );
 }

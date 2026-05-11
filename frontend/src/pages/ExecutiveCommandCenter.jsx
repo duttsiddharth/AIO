@@ -6,6 +6,7 @@ import SectionCard from "@/components/SectionCard";
 import StatusBadge from "@/components/StatusBadge";
 import ExportButton from "@/components/ExportButton";
 import RadialGauge from "@/components/RadialGauge";
+import ModuleRoadmap from "@/components/ModuleRoadmap";
 import { useStore } from "@/store/useStore";
 import { getPersona } from "@/data/personas";
 import {
@@ -303,6 +304,8 @@ export default function ExecutiveCommandCenter() {
           <Target className="hidden md:block h-10 w-10 text-primary opacity-30" />
         </div>
       </motion.div>
+
+      <ModuleRoadmap moduleId="command-center" />
     </div>
   );
 }

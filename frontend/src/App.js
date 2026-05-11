@@ -19,6 +19,7 @@ import Governance from "@/pages/Governance";
 import ReportExport from "@/pages/ReportExport";
 import Personas from "@/pages/Personas";
 import DeliveryKit from "@/pages/DeliveryKit";
+import Roadmap from "@/pages/Roadmap";
 import { Toaster } from "@/components/ui/sonner";
 
 function ThemeBoot({ children }) {
@@ -55,6 +56,7 @@ function App() {
               <Route path="/reports" element={<ReportExport />} />
               <Route path="/personas" element={<Personas />} />
               <Route path="/delivery-kit" element={<DeliveryKit />} />
+              <Route path="/roadmap" element={<Roadmap />} />
               <Route path="*" element={<Navigate to="/command-center" replace />} />
             </Route>
           </Routes>

@@ -10,6 +10,7 @@ import {
   OUTAGE_CORRELATION,
   NETWORK_SEGMENTS,
 } from "@/data/nocData";
+import ModuleRoadmap from "@/components/ModuleRoadmap";
 import {
   AreaChart,
   Area,
@@ -138,6 +139,8 @@ export default function NOCTelecom() {
           </table>
         </div>
       </SectionCard>
+
+      <ModuleRoadmap moduleId="noc" />
     </div>
   );
 }

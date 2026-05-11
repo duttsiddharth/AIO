@@ -4,6 +4,7 @@ import SectionCard from "@/components/SectionCard";
 import StatusBadge from "@/components/StatusBadge";
 import KPICard from "@/components/KPICard";
 import ExportButton from "@/components/ExportButton";
+import ModuleRoadmap from "@/components/ModuleRoadmap";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { AUTOMATION_CANDIDATES, computeAutomationROI } from "@/data/automationData";
@@ -176,6 +177,8 @@ export default function AutomationDiscovery() {
           </p>
         </SectionCard>
       </div>
+
+      <ModuleRoadmap moduleId="automation" />
     </div>
   );
 }

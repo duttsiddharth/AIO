@@ -7,6 +7,7 @@ import ExportButton from "@/components/ExportButton";
 import { Slider } from "@/components/ui/slider";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import ModuleRoadmap from "@/components/ModuleRoadmap";
 import { useStore } from "@/store/useStore";
 import { fmtCurrency, fmtNumber, fmtMinutes } from "@/lib/format";
 import {
@@ -216,6 +217,8 @@ export default function ROICalculator() {
           </StatusBadge>
         </SectionCard>
       </div>
+
+      <ModuleRoadmap moduleId="roi" />
     </div>
   );
 }

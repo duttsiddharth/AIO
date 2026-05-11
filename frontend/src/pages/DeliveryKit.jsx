@@ -28,6 +28,7 @@ import {
   Users,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import ModuleRoadmap from "@/components/ModuleRoadmap";
 
 const TONE_TO_CLASS = {
   info: "border-info/40 bg-info/[0.04]",
@@ -474,6 +475,8 @@ export default function DeliveryKit() {
           and <span className="font-mono text-foreground">Governance</span> anchor Phase 3.
         </p>
       </div>
+
+      <ModuleRoadmap moduleId="delivery-kit" />
     </div>
   );
 }

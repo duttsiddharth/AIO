@@ -1,7 +1,13 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
+import { materializeSeed } from "@/data/roadmapSeed";
 
 const DEFAULT_PERSONA = "transformation_manager";
+
+const newId = () => {
+  if (typeof crypto !== "undefined" && crypto.randomUUID) return crypto.randomUUID();
+  return "id_" + Math.random().toString(36).slice(2) + Date.now().toString(36);
+};
 
 export const useStore = create(
   persist(
@@ -42,6 +48,10 @@ export const useStore = create(
       // Saved report snapshots
       reports: [],
 
+      // Roadmap items — global, filterable by moduleId
+      roadmapItems: [],
+      roadmapSeeded: false,
+
       setTheme: (theme) => set({ theme }),
       toggleTheme: () => set((s) => ({ theme: s.theme === "dark" ? "light" : "dark" })),
       setPersona: (persona) => set({ persona }),
@@ -60,14 +70,54 @@ export const useStore = create(
 
       addReport: (report) =>
         set((s) => ({
-          reports: [{ id: crypto.randomUUID(), createdAt: new Date().toISOString(), ...report }, ...s.reports].slice(0, 25),
+          reports: [{ id: newId(), createdAt: new Date().toISOString(), ...report }, ...s.reports].slice(0, 25),
         })),
       removeReport: (id) =>
         set((s) => ({ reports: s.reports.filter((r) => r.id !== id) })),
+
+      // Roadmap CRUD
+      seedRoadmapIfEmpty: () => {
+        const s = get();
+        if (!s.roadmapSeeded && s.roadmapItems.length === 0) {
+          set({ roadmapItems: materializeSeed(), roadmapSeeded: true });
+        }
+      },
+      resetRoadmap: () => set({ roadmapItems: materializeSeed(), roadmapSeeded: true }),
+      addRoadmapItem: (item) =>
+        set((s) => ({
+          roadmapItems: [
+            {
+              id: newId(),
+              createdAt: new Date().toISOString(),
+              updatedAt: new Date().toISOString(),
+              status: "backlog",
+              priority: "medium",
+              effort: "M",
+              impact: "M",
+              tags: [],
+              ...item,
+            },
+            ...s.roadmapItems,
+          ],
+        })),
+      updateRoadmapItem: (id, patch) =>
+        set((s) => ({
+          roadmapItems: s.roadmapItems.map((it) =>
+            it.id === id ? { ...it, ...patch, updatedAt: new Date().toISOString() } : it
+          ),
+        })),
+      removeRoadmapItem: (id) =>
+        set((s) => ({ roadmapItems: s.roadmapItems.filter((it) => it.id !== id) })),
+      moveRoadmapItem: (id, status) =>
+        set((s) => ({
+          roadmapItems: s.roadmapItems.map((it) =>
+            it.id === id ? { ...it, status, updatedAt: new Date().toISOString() } : it
+          ),
+        })),
     }),
     {
       name: "aiops-os-store",
-      version: 1,
+      version: 2,
       storage: createJSONStorage(() => localStorage),
       partialize: (s) => ({
         theme: s.theme,
@@ -77,6 +127,8 @@ export const useStore = create(
         observabilityInputs: s.observabilityInputs,
         roiInputs: s.roiInputs,
         reports: s.reports,
+        roadmapItems: s.roadmapItems,
+        roadmapSeeded: s.roadmapSeeded,
       }),
     }
   )

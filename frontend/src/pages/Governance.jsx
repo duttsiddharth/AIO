@@ -3,6 +3,7 @@ import SectionCard from "@/components/SectionCard";
 import StatusBadge from "@/components/StatusBadge";
 import ExportButton from "@/components/ExportButton";
 import { GOVERNANCE_DIMENSIONS, COMPLIANCE_FRAMEWORKS, AI_AUTOMATION_POLICIES } from "@/data/governanceData";
+import ModuleRoadmap from "@/components/ModuleRoadmap";
 import { Lock, ShieldCheck, FileText } from "lucide-react";
 
 export default function Governance() {
@@ -96,6 +97,8 @@ export default function Governance() {
           </div>
         ))}
       </div>
+
+      <ModuleRoadmap moduleId="governance" />
     </div>
   );
 }

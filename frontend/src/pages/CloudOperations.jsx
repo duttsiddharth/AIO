@@ -4,6 +4,7 @@ import KPICard from "@/components/KPICard";
 import StatusBadge from "@/components/StatusBadge";
 import ExportButton from "@/components/ExportButton";
 import { CLOUD_SCORECARD, CLOUD_EFFICIENCY_TREND, REGION_FOOTPRINT } from "@/data/cloudData";
+import ModuleRoadmap from "@/components/ModuleRoadmap";
 import {
   AreaChart,
   Area,
@@ -104,6 +105,8 @@ export default function CloudOperations() {
           })}
         </div>
       </SectionCard>
+
+      <ModuleRoadmap moduleId="cloud" />
     </div>
   );
 }

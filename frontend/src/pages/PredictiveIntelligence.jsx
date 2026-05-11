@@ -4,6 +4,7 @@ import SectionCard from "@/components/SectionCard";
 import StatusBadge from "@/components/StatusBadge";
 import ExportButton from "@/components/ExportButton";
 import { Button } from "@/components/ui/button";
+import ModuleRoadmap from "@/components/ModuleRoadmap";
 import { PREDICTIVE_SIGNALS, ANOMALY_FORECAST } from "@/data/predictiveData";
 import {
   LineChart,
@@ -144,6 +145,8 @@ export default function PredictiveIntelligence() {
           Shaded window indicates predicted SLA breach probability above 70%
         </div>
       </SectionCard>
+
+      <ModuleRoadmap moduleId="predictive" />
     </div>
   );
 }

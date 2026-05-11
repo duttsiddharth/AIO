@@ -5,6 +5,7 @@ import StatusBadge from "@/components/StatusBadge";
 import MaturityRadar from "@/components/MaturityRadar";
 import RadialGauge from "@/components/RadialGauge";
 import ExportButton from "@/components/ExportButton";
+import ModuleRoadmap from "@/components/ModuleRoadmap";
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
@@ -218,6 +219,8 @@ export default function MaturityAssessment() {
           </div>
         </SectionCard>
       </div>
+
+      <ModuleRoadmap moduleId="maturity" />
     </div>
   );
 }

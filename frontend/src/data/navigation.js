@@ -16,6 +16,7 @@ import {
   FileText,
   Users,
   Rocket,
+  Map,
 } from "lucide-react";
 
 export const NAV_GROUPS = [
@@ -24,6 +25,7 @@ export const NAV_GROUPS = [
     items: [
       { id: "command-center", label: "Executive Command", icon: LayoutDashboard, path: "/command-center", badge: "LIVE" },
       { id: "maturity", label: "Maturity Assessment", icon: Gauge, path: "/maturity" },
+      { id: "roadmap", label: "Roadmap", icon: Map, path: "/roadmap", badge: "NEW" },
     ],
   },
   {
@@ -47,7 +49,7 @@ export const NAV_GROUPS = [
   {
     label: "Strategy",
     items: [
-      { id: "delivery-kit", label: "Delivery Kit", icon: Rocket, path: "/delivery-kit", badge: "NEW" },
+      { id: "delivery-kit", label: "Delivery Kit", icon: Rocket, path: "/delivery-kit" },
       { id: "build-buy-partner", label: "Build · Buy · Partner", icon: Scale, path: "/build-buy-partner" },
       { id: "roi", label: "ROI Calculator", icon: Calculator, path: "/roi" },
       { id: "governance", label: "Governance & Compliance", icon: Lock, path: "/governance" },

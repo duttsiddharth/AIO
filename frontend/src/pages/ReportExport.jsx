@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useStore } from "@/store/useStore";
+import ModuleRoadmap from "@/components/ModuleRoadmap";
 import { Trash2, FileText, Download } from "lucide-react";
 import jsPDF from "jspdf";
 import { toast } from "sonner";
@@ -223,6 +224,8 @@ export default function ReportExport() {
           </ul>
         )}
       </SectionCard>
+
+      <ModuleRoadmap moduleId="reports" />
     </div>
   );
 }

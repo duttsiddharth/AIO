@@ -4,6 +4,7 @@ import SectionCard from "@/components/SectionCard";
 import StatusBadge from "@/components/StatusBadge";
 import ExportButton from "@/components/ExportButton";
 import TopologyDiagram from "@/components/TopologyDiagram";
+import ModuleRoadmap from "@/components/ModuleRoadmap";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
@@ -227,6 +228,8 @@ export default function ObservabilityArchitecture() {
           </div>
         ))}
       </div>
+
+      <ModuleRoadmap moduleId="observability" />
     </div>
   );
 }
