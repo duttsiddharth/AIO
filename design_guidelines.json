@@ -1,0 +1,153 @@
+{
+  "theme": "dark_and_light",
+  "archetype": "4_swiss_high_contrast_modified",
+  "description": "Executive Command Center design focusing on data density, absolute clarity, and a premium SaaS aesthetic (Palantir/Bloomberg meets Datadog/Linear).",
+  "typography": {
+    "fonts": {
+      "heading": "Cabinet Grotesk",
+      "body": "Satoshi",
+      "mono": "JetBrains Mono"
+    },
+    "scale": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-none",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl tracking-tight leading-none",
+      "h3": "text-xl sm:text-2xl tracking-tight",
+      "h4": "text-lg sm:text-xl font-medium",
+      "body": "text-base leading-relaxed",
+      "small": "text-sm",
+      "overline": "text-xs uppercase tracking-[0.2em] font-mono"
+    },
+    "rules": [
+      "No Inter, Roboto, Space Grotesk, or generic templates fonts.",
+      "Headings use Cabinet Grotesk with tight tracking.",
+      "All KPIs, SLA metrics, IP addresses, and logs must use JetBrains Mono."
+    ]
+  },
+  "colors": {
+    "light": {
+      "background": "#FBFBFC",
+      "surface": "#FFFFFF",
+      "surface_hover": "#F2F3F5",
+      "border": "#E5E7EB",
+      "text_primary": "#0A0D14",
+      "text_secondary": "#52525B",
+      "text_tertiary": "#A1A1AA",
+      "primary": "#0055FF",
+      "primary_foreground": "#FFFFFF",
+      "success": "#00C566",
+      "warning": "#FF9500",
+      "error": "#FF3B30",
+      "ring": "#0055FF"
+    },
+    "dark": {
+      "background": "#0A0A0E",
+      "surface": "#121218",
+      "surface_hover": "#1A1A22",
+      "border": "#27272A",
+      "border_highlight": "#3F3F46",
+      "text_primary": "#FFFFFF",
+      "text_secondary": "#A1A1AA",
+      "text_tertiary": "#52525B",
+      "primary": "#3377FF",
+      "primary_foreground": "#FFFFFF",
+      "success": "#34D399",
+      "warning": "#FBBF24",
+      "error": "#F87171",
+      "ring": "#3377FF"
+    },
+    "charts": {
+      "categorical": [
+        "#0055FF",
+        "#FF9500",
+        "#00C566",
+        "#FF3B30",
+        "#3B82F6",
+        "#F59E0B"
+      ],
+      "sequential": [
+        "#EFF6FF",
+        "#DBEAFE",
+        "#BFDBFE",
+        "#93C5FD",
+        "#60A5FA",
+        "#3B82F6",
+        "#2563EB",
+        "#1D4ED8",
+        "#1E40AF"
+      ],
+      "rules": "Avoid purple/violet and teal gradients completely. Stick to Azure, Amber, Emerald, and Crimson for logical AIOps semantic mapping."
+    }
+  },
+  "spacing_and_layout": {
+    "scale": "tailwind_generous",
+    "dashboard_grid": {
+      "type": "Control Room Grid",
+      "columns": "grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6",
+      "gap": "gap-4 md:gap-6",
+      "widget_ratios": {
+        "kpi_summary": "col-span-1",
+        "primary_chart": "col-span-2 row-span-2 lg:col-span-3",
+        "feed_list": "col-span-1 row-span-2",
+        "full_width_table": "col-span-full"
+      }
+    },
+    "padding": {
+      "card_standard": "p-6",
+      "card_dense": "p-4",
+      "page_container": "px-4 sm:px-6 lg:px-8 py-8"
+    }
+  },
+  "surface_strategies": {
+    "light": {
+      "card": "bg-white border border-gray-200 shadow-sm rounded-lg",
+      "glass": "backdrop-blur-xl bg-white/70 border border-white/40 shadow-[0_8px_32px_rgba(0,0,0,0.04)]",
+      "header": "sticky top-0 z-50 backdrop-blur-xl bg-white/80 border-b border-gray-200"
+    },
+    "dark": {
+      "card": "bg-[#121218] border border-[#27272A] rounded-lg shadow-none relative overflow-hidden",
+      "card_glow": "after:absolute after:inset-0 after:rounded-lg after:ring-1 after:ring-inset after:ring-white/5",
+      "glass": "backdrop-blur-xl bg-black/60 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.2)]",
+      "header": "sticky top-0 z-50 backdrop-blur-xl bg-[#0A0A0E]/80 border-b border-[#27272A]"
+    }
+  },
+  "components": {
+    "cards": "Strictly flat rectangular or subtly rounded (8px max). Do not overuse soft shadows. Focus on 1px borders.",
+    "buttons": "Primary: Solid Azure/Blue with white text. Secondary: Outline with transparent bg, text matches border color on hover.",
+    "tables": "Dense, numeric columns right-aligned, status badges (pill shaped), hover states on rows (bg-surface_hover).",
+    "charts": "Recharts or Shadcn charts. Use strict categorical palette. No backgrounds on chart containers (let the grid provide the structure). Tooltips must have dark/light theme matching.",
+    "inputs": "Shadcn based. Dark mode: bg-[#121218] border-[#27272A] focus:ring-primary.",
+    "navigation": "Enterprise sidebar navigation. Collapsible (icon only) to maximize workspace. Active state: bg-surface_hover with primary color left-border accent."
+  },
+  "motion": {
+    "philosophy": "Micro-interactions for feedback. No decorative bouncing.",
+    "hover": "Transition transform 0.2s ease, opacity 0.2s ease. Very slight scale (1.01) on interactive cards.",
+    "page_load": "Staggered fade-up for widgets. (Framer motion: initial={{opacity: 0, y: 10}} animate={{opacity: 1, y: 0}} transition={{staggerChildren: 0.1}})",
+    "data_updates": "Number counters for KPIs when data changes."
+  },
+  "hero_approach": {
+    "persona": "Transformation Manager",
+    "layout": "Command Center Entry. Left-aligned typography, high-impact value proposition.",
+    "visuals": "Abstract data flows or maturity radar chart hero visualization. Not a generic photo.",
+    "cta": "Launch Command Center | Run Maturity Assessment"
+  },
+  "media_and_images": {
+    "hero_backgrounds": [
+      {
+        "url": "https://images.pexels.com/photos/17323801/pexels-photo-17323801.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Modern server room with blue illumination, ideal for the abstract NOC/AIOps tech background.",
+        "category": "hero_abstract_dark"
+      },
+      {
+        "url": "https://images.pexels.com/photos/5480781/pexels-photo-5480781.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Wires managing centralized resource of server in data center, can be used for connectivity/cloud ops abstract.",
+        "category": "hero_abstract_light"
+      }
+    ],
+    "rules": "Never use placeholder images. If specific icons/avatars are needed, use Lucide-react or UI defaults."
+  },
+  "testing": {
+    "attributes": [
+      "All interactive elements MUST use data-testid. Examples: data-testid='kpi-card-mttr', data-testid='nav-sre-module'."
+    ]
+  }
+}
