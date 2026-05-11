@@ -57,7 +57,13 @@ GitHub Pages (HashRouter compatible). README includes both gh-pages CLI and GitH
 - Responsive layout (mobile sheet menu)
 - LocalStorage persistence
 
-## What's Implemented (2026-02-12 — iteration 2)
+## What's Implemented (2026-02-12 — iteration 3)
+- **Global Roadmap module** at `/roadmap` — Kanban board with 4 columns (Backlog · Planned · In Progress · Done), KPIs (Total, In Progress, Done, Critical, Modules covered), module + priority filters, module coverage summary.
+- **Per-module embedded `<ModuleRoadmap />`** at the bottom of all 16 module pages — list of initiatives for that module with completion bar, status-pill click cycles status, hover reveals edit pencil.
+- **Full CRUD dialog** (`RoadmapItemDialog`) — title, description, owner, due date, module, status, priority, effort (S/M/L/XL), impact (L/M/H), tags; persisted via Zustand+localStorage (store version bumped to 2).
+- **Seeded with 32 initiatives** (2 per module across 16 modules) — realistic enhancements like "Save maturity snapshots over time", "Auto-rollback on SLO burn", "FinOps chargeback model", etc.
+- **Reset to seed** + **New initiative** controls; move-card chips on hover.
+- Sidebar gains a 'Roadmap' entry with **NEW** badge under the Command group.
 - **Interactive SVG topology diagram** in Observability Architecture (`/observability`):
   14 nodes across Collect → Process → Store → Analyze lanes, animated telemetry pulses on edges,
   filter chips (all/metrics/logs/traces/events), hover/click highlighting, side detail panel with
