@@ -25,10 +25,7 @@ export default function DashboardLayout() {
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
               AIOps Transformation OS · v1.0 · Crafted by Siddharth Dutt
             </p>
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-              All data is simulated for demonstration · Static-host ready
-            </p>
-          </div>
+                   </div>
         </footer>
       </div>
     </div>
