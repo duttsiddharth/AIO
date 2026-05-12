@@ -1,4 +1,5 @@
 {
+  "homepage": "https://duttsiddharth.github.io/AIO",
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
@@ -60,6 +61,8 @@
     "zustand": "^5.0.13"
   },
   "scripts": {
+    "predeploy": "yarn build",
+"deploy": "gh-pages -d build",
     "start": "craco start",
     "build": "craco build",
     "test": "craco test"
