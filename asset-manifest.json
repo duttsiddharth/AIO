@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/AIO/static/css/main.37056c58.css",
+    "main.js": "/AIO/static/js/main.95102345.js",
+    "static/js/977.00323907.chunk.js": "/AIO/static/js/977.00323907.chunk.js",
+    "static/js/455.98db480b.chunk.js": "/AIO/static/js/455.98db480b.chunk.js",
+    "index.html": "/AIO/index.html",
+    "main.37056c58.css.map": "/AIO/static/css/main.37056c58.css.map",
+    "main.95102345.js.map": "/AIO/static/js/main.95102345.js.map",
+    "977.00323907.chunk.js.map": "/AIO/static/js/977.00323907.chunk.js.map",
+    "455.98db480b.chunk.js.map": "/AIO/static/js/455.98db480b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.37056c58.css",
+    "static/js/main.95102345.js"
+  ]
+}
